@@ -1,0 +1,26 @@
+---
+layout: post
+title: 'TIL : 2020-07-19'
+date: '2021-07-19 04:41:13'
+tags:
+- til
+- gitlab
+---
+
+Mencoba untuk pasang gitlab runner menggunakan helm chart seperti tutorialnya di sini : [https://docs.gitlab.com/runner/install/kubernetes.html](https://docs.gitlab.com/runner/install/kubernetes.html)  
+Saya baru sadar jika kita butuh menambahkan role cluster-admin untuk service account default gitlab (jika kita tidak mendefinisikannya di values.yaml)
+
+    kind: RoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: cluster-admin
+      namespace: gitlab
+    subjects:
+      - kind: ServiceAccount
+        name: default
+        namespace: gitlab
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: cluster-admin
+

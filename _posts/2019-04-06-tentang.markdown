@@ -1,0 +1,15 @@
+---
+layout: post
+title: Tentang Situs
+date: '2019-04-06 17:18:12'
+tags:
+- tentang
+---
+
+Terima kasih atas upaya yang dilakukan hingga menjangkau laman ini.   
+Situs ini dibuat oleh warga biasa saja, yang kebetulan bernama Robertus Negoro. Tujuannya hanyalah berbagi narasi dan opini.
+
+Penulis juga membuat siniar yang sudah lama tidak diperbarui di [randomops.github.io](https://randomops.github.io) , bila ada waktu dan berkenan, sila mendengarkan episode - episode yang tipenya wawancara / QnA (karena sisanya hanya canda gurau yang mungkin nirfaedah).
+
+Untuk sanggahan atau apapun ini sila tulis ke kontak[@]robee.id
+

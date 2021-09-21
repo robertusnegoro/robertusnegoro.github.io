@@ -1,0 +1,14 @@
+---
+layout: post
+title: 'TIL : 2020-05-30'
+date: '2021-05-29 17:09:55'
+tags:
+- til
+---
+
+Sebagai bekal untuk siniar baru berbahasa Jawa Timur nanti, yang mana saya yakin akan banyak _pisuhan - pisuhan_ , penulis mempersiapkan cara untuk menyensor hal tersebut menggunakan kakas suara bernama Audacity.
+
+<figure class="kg-card kg-embed-card"><iframe width="200" height="113" src="https://www.youtube.com/embed/erA5KhPfy5Q?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>
+
+_nek pisuhan kabeh isine yok opo iki, rek!_
+
