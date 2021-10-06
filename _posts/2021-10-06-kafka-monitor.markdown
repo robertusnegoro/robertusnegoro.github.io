@@ -30,6 +30,8 @@ Base assumption :
 * kafka cluster endpoint : `my-cluster-kafka-bootstrap`, Port : `9092`
 * zookeeper cluster endpoint : `my-cluster-zookeeper-client`, Port : `2181`
 * Run xinfra monitor in single cluster monitoring mode
+
+
 ## Deploy the Kafka Monitor / Xinfra Monitor
 
 ### Initial steps :
@@ -39,6 +41,7 @@ Base assumption :
 * Checkout to latest release tag. e.g 
     
     `git checkout 2.5.10`
+
 
 ### Modify the Dockerfile
 If you can see. There is Dockerfile [here](https://github.com/linkedin/kafka-monitor/blob/2.5.10/docker/Dockerfile). 
@@ -77,6 +80,7 @@ ADD config/log4j2.properties config/log4j2.properties
 ENTRYPOINT ["/opt/kafka-monitor/bin/single-cluster-monitor.sh"]
 ```
 
+
 ### Build Docker image
 
 * Build the docker image using existing makefile (yea you can use a vanilla docker build command too)
@@ -94,13 +98,17 @@ ENTRYPOINT ["/opt/kafka-monitor/bin/single-cluster-monitor.sh"]
     ```Bash
     docker push robeevanjava/kafka-monitor:v2.5.10
     ```
+
+    
 ### Deploying the Kubernetes Objects
 
 I have create the kubernetes manifest here: [xinfra-monitor-manifest.yaml](https://gist.githubusercontent.com/robertusnegoro/b2a029811ee63725212dabaab38b4fa4/raw/479c86d04291c044feb92d50e78cf73fa80268a1/xinfra-monitor-k8s.yaml)
 
 If you want to use exactly that manifest mentioned above, just do 
 
-`kubectl apply -f https://gist.githubusercontent.com/robertusnegoro/b2a029811ee63725212dabaab38b4fa4/raw/479c86d04291c044feb92d50e78cf73fa80268a1/xinfra-monitor-k8s.yaml -n kafka-monitor`
+```Bash
+kubectl apply -f https://gist.githubusercontent.com/robertusnegoro/b2a029811ee63725212dabaab38b4fa4/raw/479c86d04291c044feb92d50e78cf73fa80268a1/xinfra-monitor-k8s.yaml -n kafka-monitor
+```
 
 If you need to change the kafka and zookeeper cluster, please change the argument lines here :
 
@@ -143,6 +151,7 @@ To find the available metric, try to do these steps :
 
 Now you have kafka monitor run on your kubernetes cluster. 
 
+
 ## Optional Steps
 
 Some of the organization uses prometheus as "default" observability toolings. We can use [jolokia-exporter](https://github.com/Scalify/jolokia_exporter) 
@@ -151,6 +160,10 @@ Some of the organization uses prometheus as "default" observability toolings. We
 
 I have kubernetes manifest [here](https://gist.githubusercontent.com/robertusnegoro/68afab1983e8cbeeb8a1b936f2362821/raw/f5c28949096d25aa2521c4b442229408f1071fe9/jolokia-exporter.yaml)
 
-So to apply it, run `kubectl apply -f https://gist.githubusercontent.com/robertusnegoro/68afab1983e8cbeeb8a1b936f2362821/raw/f5c28949096d25aa2521c4b442229408f1071fe9/jolokia-exporter.yaml -n kafka-monitor`
+So to apply it, run 
+
+```Bash
+kubectl apply -f https://gist.githubusercontent.com/robertusnegoro/68afab1983e8cbeeb8a1b936f2362821/raw/f5c28949096d25aa2521c4b442229408f1071fe9/jolokia-exporter.yaml -n kafka-monitor
+```
 
 Then you can just do either [ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/getting-started.md#include-servicemonitors) or write a prometheus scrape config like explained in the example [here](https://github.com/Scalify/jolokia_exporter#readme) 
