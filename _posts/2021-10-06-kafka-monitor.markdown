@@ -99,7 +99,7 @@ ENTRYPOINT ["/opt/kafka-monitor/bin/single-cluster-monitor.sh"]
     docker push robeevanjava/kafka-monitor:v2.5.10
     ```
 
-    
+
 ### Deploying the Kubernetes Objects
 
 I have create the kubernetes manifest here: [xinfra-monitor-manifest.yaml](https://gist.githubusercontent.com/robertusnegoro/b2a029811ee63725212dabaab38b4fa4/raw/479c86d04291c044feb92d50e78cf73fa80268a1/xinfra-monitor-k8s.yaml)
@@ -107,7 +107,7 @@ I have create the kubernetes manifest here: [xinfra-monitor-manifest.yaml](https
 If you want to use exactly that manifest mentioned above, just do 
 
 ```Bash
-kubectl apply -f https://gist.githubusercontent.com/robertusnegoro/b2a029811ee63725212dabaab38b4fa4/raw/479c86d04291c044feb92d50e78cf73fa80268a1/xinfra-monitor-k8s.yaml -n kafka-monitor
+kubectl apply -f https://git.io/JwLDr -n kafka-monitor
 ```
 
 If you need to change the kafka and zookeeper cluster, please change the argument lines here :
@@ -163,7 +163,10 @@ I have kubernetes manifest [here](https://gist.githubusercontent.com/robertusneg
 So to apply it, run 
 
 ```Bash
-kubectl apply -f https://gist.githubusercontent.com/robertusnegoro/68afab1983e8cbeeb8a1b936f2362821/raw/f5c28949096d25aa2521c4b442229408f1071fe9/jolokia-exporter.yaml -n kafka-monitor
+kubectl apply -f https://git.io/JwLim -n kafka-monitor
 ```
 
 Then you can just do either [ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/getting-started.md#include-servicemonitors) or write a prometheus scrape config like explained in the example [here](https://github.com/Scalify/jolokia_exporter#readme) 
+
+
+>PS : If the git.io URL is broken, please refer to each linked gist file above :D
