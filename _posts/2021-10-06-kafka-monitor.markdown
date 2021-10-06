@@ -11,4 +11,4 @@ Draft
 
 Test insert image
 
-![test-image](sun.png){:class="img-responsive"}
+<img class="profile-picture" src="{{site.baseurl}}/sun.png">
