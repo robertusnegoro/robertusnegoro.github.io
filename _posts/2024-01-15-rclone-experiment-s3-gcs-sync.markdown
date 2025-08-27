@@ -12,6 +12,8 @@ tags:
 - cloud
 ---
 
+![Cloud Data Synchronization](https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
+
 Sebagai bagian dari eksperimen pribadi untuk memahami berbagai tool sinkronisasi cloud storage, saya tertarik untuk mencoba kemampuan rclone dalam memindahkan data antara Google Cloud Storage (GCS) bucket dan Amazon S3 bucket. Meskipun tersedia managed service seperti AWS DataSync atau GCP Storage Transfer Service, eksperimen ini bertujuan untuk mengevaluasi rclone sebagai alternatif yang lebih cost-effective.
 
 Rclone, sebagai sebuah command line tool yang cukup matang untuk sinkronisasi cloud storage, ternyata memberikan hasil yang cukup memuaskan dengan beberapa catatan penting yang perlu diperhatikan dalam eksperimen ini.
