@@ -12,7 +12,7 @@ tags:
 - infrastructure
 ---
 
-![Cloud Networking](https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
+![Cloud Networking](https://images.unsplash.com/photo-1566443280617-35db331c54fb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2148)
 
 Setelah beberapa tahun bekerja dengan kedua platform cloud ini, saya sering mendapat pertanyaan tentang perbandingan mendalam antara AWS VPC dan Google Cloud VPC. Keduanya memiliki filosofi desain yang sangat berbeda, dan pemahaman yang tepat tentang perbedaan ini sangat penting untuk arsitektur yang optimal.
 
