@@ -1,48 +1,73 @@
 ---
 layout: default
 ---
-<section id="intro">
+<section class="hero-profile wrapper">
+  <div class="hero-profile__content">
     <div class="flex-row-between">
-        <h1>{{ site.greetings }}</h1>
-        <button title="Change theme" id="theme-toggle" onclick="modeSwitcher()">
-            <div></div>
-        </button>
+      {% if site.author.available_for_hire %}
+      <span class="pill">Available for new opportunities</span>
+      {% else %}
+      <span class="pill" style="background: transparent; border: 1px solid var(--medium-text-color); color: var(--medium-text-color);">Not open to new opportunities</span>
+      {% endif %}
+      <button title="Change theme" id="theme-toggle" onclick="modeSwitcher()">
+        <div></div>
+      </button>
     </div>
-    <div class="bio">
-	    {{ site.description }}
-        <p>
-	    <a href="{{ site.url }}{{ site.baseurl }}/about/">> About me</a>
-        </p>
+    <h1 class="hero-profile__title">DevOps & SRE Expert.</h1>
+    <p class="hero-profile__subtitle">Building resilient, scalable, and secure cloud infrastructure.</p>
+    <p class="hero-profile__bio">
+      Hi, I'm Robertus. I specialize in bridging the gap between development and operations. With a deep passion for
+      automation, Kubernetes, and continuous delivery, I help organizations ship faster without sacrificing reliability.
+    </p>
+    <div class="hero-profile__actions">
+      <a href="mailto:{{ site.author.email }}" class="button">Let's Talk</a>
+      <a href="{{ site.url }}{{ site.baseurl }}/about/" class="button button--outline">About Me</a>
     </div>
+  </div>
+  <div class="hero-profile__image">
+    <img src="{{ site.url }}{{ site.baseurl }}/assets/img/hero_devops.png" alt="DevOps Engineer Illustration" />
+  </div>
+</section>
 
-
+<section class="usp-section wrapper">
+  <h2 class="section-title">Core Expertise</h2>
+  <div class="usp-grid">
+    <div class="usp-card">
+      <div class="usp-card__icon"><img src="{{ site.url }}{{ site.baseurl }}/assets/img/icon_delivery.png"
+          alt="Continuous Delivery" style="width: 48px; height: 48px; object-fit: contain;" /></div>
+      <h3 class="usp-card__title">Continuous Delivery</h3>
+      <p class="usp-card__text">Designing robust CI/CD pipelines to ensure code reaches production quickly and safely.
+        Expertise in GitLab CI, Jenkins, and ArgoCD.</p>
+    </div>
+    <div class="usp-card">
+      <div class="usp-card__icon"><img src="{{ site.url }}{{ site.baseurl }}/assets/img/icon_kubernetes.png"
+          alt="Kubernetes & Cloud" style="width: 48px; height: 48px; object-fit: contain;" /></div>
+      <h3 class="usp-card__title">Kubernetes & Cloud</h3>
+      <p class="usp-card__text">Architecting scalable containerized environments. Deep knowledge of Kubernetes
+        ecosystem, AWS, and infrastructure as code tools like Terraform.</p>
+    </div>
+    <div class="usp-card">
+      <div class="usp-card__icon"><img src="{{ site.url }}{{ site.baseurl }}/assets/img/icon_reliability.png"
+          alt="Site Reliability" style="width: 48px; height: 48px; object-fit: contain;" /></div>
+      <h3 class="usp-card__title">Site Reliability</h3>
+      <p class="usp-card__text">Implementing observability, defining SLIs/SLOs, and building fault-tolerant systems that
+        maintain high uptime and performance under load.</p>
+    </div>
+  </div>
 </section>
 
 
 
-<div class="search-article">
-    <label for="search-input" aria-hidden="true">
-        <!-- Magnifier -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="rgba(128,128,128,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-search">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-    </label>
 
-    <input type="search" id="search-input" placeholder="Find some articles here" aria-label="Search">
-    <ul id="search-results"></ul>
-</div>
 
 <section class="posts" id="Blog">
-    <h2>BLOG</h2>
-    <ul>
-        {% for post in site.posts %}
-        <li>
-		<a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
-        </li>
-        {% endfor %}
-    </ul>
+  <h2>BLOG</h2>
+  <ul>
+    {% for post in site.posts %}
+    <li>
+      <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+    </li>
+    {% endfor %}
+  </ul>
 </section>
