@@ -7,7 +7,9 @@ layout: default
       {% if site.author.available_for_hire %}
       <span class="pill">Available for new opportunities</span>
       {% else %}
-      <span class="pill" style="background: transparent; border: 1px solid var(--medium-text-color); color: var(--medium-text-color);">Not open to new opportunities</span>
+      <span class="pill"
+        style="background: transparent; border: 1px solid var(--medium-text-color); color: var(--medium-text-color);">Not
+        open to new opportunities</span>
       {% endif %}
       <button title="Change theme" id="theme-toggle" onclick="modeSwitcher()">
         <div></div>
@@ -20,7 +22,8 @@ layout: default
       automation, Kubernetes, and continuous delivery, I help organizations ship faster without sacrificing reliability.
     </p>
     <div class="hero-profile__actions">
-      <a href="mailto:{{ site.author.email }}" class="button">Let's Talk</a>
+      <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer"
+        class="button">Message on LinkedIn</a>
       <a href="{{ site.url }}{{ site.baseurl }}/about/" class="button button--outline">About Me</a>
     </div>
   </div>
@@ -60,14 +63,87 @@ layout: default
 
 
 
-<section class="posts" id="Blog">
-  <h2>BLOG</h2>
-  <ul>
+<section class="stripe-blog-section" id="Blog">
+  <div class="stripe-blog-header-row">
+    <div class="header-col-date">/ DATE</div>
+    <div class="header-col-name">/ NAME</div>
+    <div class="header-col-icon"></div>
+  </div>
+  <ul class="stripe-blog-list">
     {% for post in site.posts %}
-    <li>
-      <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+    <li class="stripe-blog-row">
+      <div class="stripe-blog-collapsed" onclick="togglePost(this, event)">
+        <div class="row-col-date">
+          <span class="square-icon">■</span>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%-m.%d" }}</time>
+        </div>
+        <div class="row-col-name">
+          <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" class="stripe-blog-title">{{ post.title }}</a>
+        </div>
+        <div class="row-col-icon">
+          <span class="toggle-icon">+</span>
+        </div>
+      </div>
+      <div class="stripe-blog-expanded" style="display: none;">
+        <div class="expanded-grid">
+          <div class="expanded-left">
+             <div class="detail-row">
+                <span class="detail-label">SUMMARY:</span>
+                <p class="detail-text">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+             </div>
+             <div class="detail-row">
+                <span class="detail-label">TOPICS:</span>
+                <div class="stripe-tags">
+                  {% for tag in post.tags %}
+                    <span class="stripe-tag">{{ tag | upcase }}</span>
+                  {% endfor %}
+                </div>
+             </div>
+          </div>
+          <div class="expanded-right">
+             <div class="detail-row">
+                <span class="detail-label">AUTHOR:</span>
+                <span class="detail-text">{{ site.author.name | default: "Robertus" }}</span>
+             </div>
+             <div class="expanded-action">
+               <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" class="stripe-read-button">Read</a>
+             </div>
+          </div>
+        </div>
+      </div>
     </li>
     {% endfor %}
   </ul>
 </section>
+
+<script>
+function togglePost(element, event) {
+  // Allow clicking the title link to navigate naturally
+  if (event && event.target.closest('a')) {
+    return;
+  }
+
+  const row = element.parentElement;
+  const expanded = row.querySelector('.stripe-blog-expanded');
+  const icon = element.querySelector('.toggle-icon');
+  
+  // Close all other rows
+  document.querySelectorAll('.stripe-blog-row').forEach(r => {
+    if (r !== row) {
+      r.querySelector('.stripe-blog-expanded').style.display = 'none';
+      r.querySelector('.toggle-icon').textContent = '+';
+      r.classList.remove('is-open');
+    }
+  });
+
+  if (expanded.style.display === 'none') {
+    expanded.style.display = 'block';
+    icon.textContent = '-';
+    row.classList.add('is-open');
+  } else {
+    expanded.style.display = 'none';
+    icon.textContent = '+';
+    row.classList.remove('is-open');
+  }
+}
+</script>
